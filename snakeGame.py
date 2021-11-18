@@ -64,7 +64,7 @@ def gameOver():
     webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ') # exit cmd console
 
 def showScore(choice=1):
-    sFont = pygame.font.SysFont('arial', 30) #choose font name and size
+    sFont = pygame.font.SysFont('arial', 35) #choose font name and size
     Ssurf = sFont.render('SCORE : {0}'.format(score), True, white) # this is the surface where game over will display having 3 args : the message, antialiasing,and Color
     Srect = Ssurf.get_rect() #to get rect coordinates of the game over text surface
     if choice == 1:
