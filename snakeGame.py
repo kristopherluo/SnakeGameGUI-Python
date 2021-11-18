@@ -19,6 +19,7 @@ pygame.display.set_caption('!!! SNAKE GAME !!!') # To set the Upper heading of t
 
 #Colors
 # The color method expects three parameters r,g,b combination to give the color
+red = pygame.Color(255, 0 ,255) #red color-gameover
 
 #old color
     #green = pygame.Color(0, 255, 0) #green-snake
