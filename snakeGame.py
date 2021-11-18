@@ -1,7 +1,7 @@
 # SNAKE GAME USING PYTHON AND PYGAME by SANKET
 
 # imports of different modules
-import pygame, sys, random, time
+import pygame, sys, random, time,random
 check_errors = pygame.init()
 # Here first we will check if the pygame successfully Initialized?
 
@@ -20,6 +20,7 @@ pygame.display.set_caption('!!! SNAKE GAME !!!') # To set the Upper heading of t
 #Colors
 # The color method expects three parameters r,g,b combination to give the color
 red = pygame.Color(255, 0 ,255) #red color-gameover
+
 #old color
     #green = pygame.Color(0, 255, 0) #green-snake
 #madison's issue of changing snake color
@@ -27,7 +28,13 @@ pink = pygame.Color(255,105,180)
 black = pygame.Color(0, 0, 0) #black-score
 white = pygame.Color(255, 255, 255) #white-screen
 blue = pygame.Color(0, 0, 255) #blue-food
+randColor=pygame.Color(random.randrange(255),random.randrange(255),random.randrange(255))
 
+#Kevin's issue of changing snake body color to look more like yellow python, changed background, score and food color as well.
+red = pygame.Color(255, 0 ,0) #red color-gameover
+yellow = pygame.Color(255, 255, 0)
+green = pygame.Color(204, 255, 153) #green-background
+brown = pygame.Color(102, 51, 0) #brown-food
 
 # fps controller
 fpsController = pygame.time.Clock()
@@ -45,8 +52,8 @@ initscore = 0
 
 # Game Over function
 def gameOver():
-    myFont = pygame.font.SysFont('monaco', 72) #choose font name and size
-    GOsurf = myFont.render(' YOU LOST -- GAME OVER !!!', True, red) # this is the surface where game over will display having 3 args : the message, antialiasing,and Color
+    myFont = pygame.font.SysFont('arial', 72) #choose font name and size
+    GOsurf = myFont.render(' YOU LOST -- GAME OVER !!!', True, randColor) # this is the surface where game over will display having 3 args : the message, antialiasing,and Color
     GOrect = GOsurf.get_rect() #to get rect coordinates of the game over text surface
     GOrect.midtop = (360, 15)
     playSurface.blit(GOsurf, GOrect) # bind the gameover text to the main surface
@@ -54,10 +61,10 @@ def gameOver():
     pygame.display.flip() # to set the fps
     time.sleep(5)
     pygame.quit() # exit game window
-    sys.exit() # exit cmd console
+    webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ') # exit cmd console
 
 def showScore(choice=1):
-    sFont = pygame.font.SysFont('monaco', 42) #choose font name and size
+    sFont = pygame.font.SysFont('arial', 42) #choose font name and size
     Ssurf = sFont.render('SCORE : {0}'.format(score), True, white) # this is the surface where game over will display having 3 args : the message, antialiasing,and Color
     Srect = Ssurf.get_rect() #to get rect coordinates of the game over text surface
     if choice == 1:
@@ -74,7 +81,7 @@ while True:
     for event in pygame.event.get(): # accepts the event
         if event.type == pygame.QUIT: # quit event
             pygame.quit()
-            sys.exit()
+            webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
         elif event.type == pygame.KEYDOWN: # when keyboard key is pressed
             if event.key == pygame.K_RIGHT or event.key == ord('d'): # Right Move
                 changeTo = 'RIGHT'
@@ -118,10 +125,10 @@ while True:
     if foodSpawn == False:
         foodPos = [random.randrange(1,72)*10,random.randrange(1,46)*10]
     foodSpawn = True
-    playSurface.fill(black)
+    playSurface.fill(randColor)
     for pos in snakeBody:
-        pygame.draw.rect(playSurface, pink, pygame.Rect(pos[0],pos[1],10,10))
-    pygame.draw.rect(playSurface,blue,pygame.Rect(foodPos[0],foodPos[1],10,10))
+        pygame.draw.rect(playSurface, yellow, pygame.Rect(pos[0],pos[1],10,10))
+    pygame.draw.rect(playSurface,brown,pygame.Rect(foodPos[0],foodPos[1],10,10))
 
     # Boundary Condition
     if snakePos[0] > 710 or snakePos[0] < 0:
