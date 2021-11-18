@@ -126,6 +126,7 @@ while True:
         foodPos = [random.randrange(1,72)*10,random.randrange(1,46)*10]
     foodSpawn = True
     playSurface.fill(randColor)
+    randColor=pygame.Color(random.randrange(255),random.randrange(255),random.randrange(255))
     for pos in snakeBody:
         pygame.draw.rect(playSurface, yellow, pygame.Rect(pos[0],pos[1],10,10))
     pygame.draw.rect(playSurface,brown,pygame.Rect(foodPos[0],foodPos[1],10,10))
