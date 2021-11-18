@@ -50,8 +50,8 @@ initscore = 0
 
 # Game Over function
 def gameOver():
-    myFont = pygame.font.SysFont('monaco', 72) #choose font name and size
-    GOsurf = myFont.render('GAME OVER !!!', True, red) # this is the surface where game over will display having 3 args : the message, antialiasing,and Color
+    myFont = pygame.font.SysFont('arial', 72) #choose font name and size
+    GOsurf = myFont.render(' YOU LOST -- GAME OVER !!!', True, red) # this is the surface where game over will display having 3 args : the message, antialiasing,and Color
     GOrect = GOsurf.get_rect() #to get rect coordinates of the game over text surface
     GOrect.midtop = (360, 15)
     playSurface.blit(GOsurf, GOrect) # bind the gameover text to the main surface
@@ -62,8 +62,8 @@ def gameOver():
     webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ') # exit cmd console
 
 def showScore(choice=1):
-    sFont = pygame.font.SysFont('monaco', 42) #choose font name and size
-    Ssurf = sFont.render('SCORE : {0}'.format(score), True, blue) # this is the surface where game over will display having 3 args : the message, antialiasing,and Color
+    sFont = pygame.font.SysFont('arial', 42) #choose font name and size
+    Ssurf = sFont.render('SCORE : {0}'.format(score), True, white) # this is the surface where game over will display having 3 args : the message, antialiasing,and Color
     Srect = Ssurf.get_rect() #to get rect coordinates of the game over text surface
     if choice == 1:
         Srect.midtop = (80, 10)
