@@ -46,15 +46,32 @@ initscore = 0
 # Game Over function
 def gameOver():
     myFont = pygame.font.SysFont('monaco', 72) #choose font name and size
-    GOsurf = myFont.render(' YOU LOST -- GAME OVER !!!', True, red) # this is the surface where game over will display having 3 args : the message, antialiasing,and Color
+    GOsurf = myFont.render(' YOU LOST -- GAME OVER !!! ', True, red) # this is the surface where game over will display having 3 args : the message, antialiasing,and Color
     GOrect = GOsurf.get_rect() #to get rect coordinates of the game over text surface
     GOrect.midtop = (360, 15)
     playSurface.blit(GOsurf, GOrect) # bind the gameover text to the main surface
+
+    myFont2 = pygame.font.SysFont('monaco', 72)
+    PASurf = myFont2.render("Play Again? (y/n)", True, red)
+    PARect = PASurf.get_rect()
+    PARect.midtop = (360, 65)
+    playSurface.blit(PASurf, PARect)
+
+
     showScore(0)
     pygame.display.flip() # to set the fps
     time.sleep(5)
-    pygame.quit() # exit game window
-    sys.exit() # exit cmd console
+
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_y:
+                    print("Restart the Game")
+                    pass
+                if event.key == pygame.K_n:
+                    print("No has been Pressed")
+                    pygame.quit() # exit game window
+                    sys.exit() # exit cmd console
+
 
 def showScore(choice=1):
     sFont = pygame.font.SysFont('monaco', 42) #choose font name and size
