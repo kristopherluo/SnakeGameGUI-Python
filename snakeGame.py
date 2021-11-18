@@ -31,7 +31,6 @@ blue = pygame.Color(0, 0, 255) #blue-food
 randColor=pygame.Color(random.randrange(255),random.randrange(255),random.randrange(255))
 
 #Kevin's issue of changing snake body color to look more like yellow python, changed background, score and food color as well.
-red = pygame.Color(255, 0 ,0) #red color-gameover
 yellow = pygame.Color(255, 255, 0)
 green = pygame.Color(204, 255, 153) #green-background
 brown = pygame.Color(102, 51, 0) #brown-food
@@ -57,11 +56,26 @@ def gameOver():
     GOrect = GOsurf.get_rect() #to get rect coordinates of the game over text surface
     GOrect.midtop = (360, 15)
     playSurface.blit(GOsurf, GOrect) # bind the gameover text to the main surface
+
+    myFont2 = pygame.font.SysFont('monaco', 72)
+    PASurf = myFont2.render("Play Again? (y/n)", True, red)
+    PARect = PASurf.get_rect()
+    PARect.midtop = (360, 65)
+    playSurface.blit(PASurf, PARect)
+
+
     showScore(0)
     pygame.display.flip() # to set the fps
     time.sleep(5)
-    pygame.quit() # exit game window
-    webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ') # exit cmd console
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_y:
+                    print("Restart the Game")
+                    pass
+                if event.key == pygame.K_n:
+                    print("No has been Pressed")
+                    pygame.quit() # exit game window
+                    sys.exit() # exit cmd console
 
 def showScore(choice=1):
     sFont = pygame.font.SysFont('arial', 42) #choose font name and size
